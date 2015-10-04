@@ -19,12 +19,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let intervalTime = 20.0
-      
+        let intervalTime = 5.0
+        
+        checkDatabase()
         displayRandomQuote()
         _ = NSTimer.scheduledTimerWithTimeInterval(intervalTime, target: self, selector: "displayRandomQuote", userInfo: nil, repeats: true)
         view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.9)
         
+    }
+    
+    func checkDatabase() {
+       let quoteDAO = QuoteDAO()
+       let quotes = quoteDAO.getQuotes()
+        
+        if quotes.count == 0 {
+            quoteDAO.initQuoteDatabase()
+        }
     }
     
     func displayRandomQuote() {
