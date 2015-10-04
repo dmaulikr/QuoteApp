@@ -19,12 +19,16 @@ class QuoteDAO: Object {
         }
         
     }
-    /*
+
     func getRandomQuote() -> Quote {
         
         let allQuotes = getQuotes()
+        let utility = QuoteUtility()
+        let randomIndex = utility.randomInt(0, max: allQuotes.count-1)
         
-    }*/
+        return allQuotes[randomIndex]
+        
+    }
     
     func deleteQuotes() {
         let realm = try! Realm()

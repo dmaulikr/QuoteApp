@@ -19,12 +19,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let quoteDAO = QuoteDAO()
-        let quotes = quoteDAO.getQuotes()
+        let quote = quoteDAO.getRandomQuote()
         
        // quoteDAO.deleteQuotes()
         
-        lblQuoteAuthor.text = quotes[0].author
-        lblQuoteQuote.text = quotes[0].quote
+        lblQuoteAuthor.text = quote.author
+        lblQuoteQuote.text = quote.quote
         view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.9)
  
     }
