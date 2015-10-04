@@ -11,22 +11,29 @@ import RealmSwift
 
 class ViewController: UIViewController {
 
+
     @IBOutlet weak var lblQuoteAuthor: UILabel!
-    @IBOutlet weak var lblQuoteQuote: UILabel!
+    @IBOutlet weak var lblQuote: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let intervalTime = 20.0
+      
+        displayRandomQuote()
+        _ = NSTimer.scheduledTimerWithTimeInterval(intervalTime, target: self, selector: "displayRandomQuote", userInfo: nil, repeats: true)
+        view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.9)
+        
+    }
+    
+    func displayRandomQuote() {
         let quoteDAO = QuoteDAO()
         let quote = quoteDAO.getRandomQuote()
         
-       // quoteDAO.deleteQuotes()
-        
         lblQuoteAuthor.text = quote.author
-        lblQuoteQuote.text = quote.quote
-        view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.9)
- 
+        lblQuote.text = quote.quote
+        
     }
 
     override func didReceiveMemoryWarning() {

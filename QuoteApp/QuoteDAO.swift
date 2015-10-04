@@ -39,8 +39,6 @@ class QuoteDAO: Object {
     
     func getQuotes() -> [Quote] {
         
-        
-        
         let quoteResults = try! Realm().objects(Quote)
         var quotes = [Quote]()
         
